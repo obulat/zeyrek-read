@@ -5,7 +5,7 @@ import nltk
 
 from zeyrek import MorphAnalyzer
 
-MAX_SIZE = 100
+MAX_SIZE = 2000
 nltk.download('punkt')
 
 class Annotator:
@@ -31,7 +31,6 @@ class Annotator:
                 if len(lemmas) > 1:
                     lemmas = [lemma for lemma in lemmas if any(lemma.values())]
                 annotated_word = { 'id': i+1, 'word': term, 'meanings': lemmas}
-                print(f"RESULT: {annotated_word}")
                 annotated_paragraph.append(annotated_word)
             annotated.append(annotated_paragraph)
         return annotated
@@ -41,9 +40,6 @@ class Annotator:
         Cuts the text after MAX_TEXT_SIZE (without cutting the last word)
         Splits the text into paragraphs
         Splits the paragraphs into sentences
-
-        @param text:
-        @return:
         """
         if len(text) > self.MAX_TEXT_SIZE:
             last_index = text[:self.MAX_TEXT_SIZE].rfind(' ')
