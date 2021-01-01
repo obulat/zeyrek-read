@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from annotator import Annotator
 from starlette.responses import JSONResponse
-from fastapi.middleware.cors import CORSMiddleware
+from starlette.middleware.cors import CORSMiddleware
 
 annotator = Annotator()
 app = FastAPI()
