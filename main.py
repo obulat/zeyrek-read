@@ -8,7 +8,12 @@ from pydantic import BaseModel
 annotator = Annotator()
 app = FastAPI()
 origins = ["*"]
-app.add_middleware(CORSMiddleware, allow_origins=origins)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_methods=['*'],
+    allow_headers=['*'],
+    )
 
 class Text(BaseModel):
     text: str
